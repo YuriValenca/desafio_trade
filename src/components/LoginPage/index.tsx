@@ -1,6 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from "../../store/store";
+import { login } from "../../store/actions/keyAuthentication";
 
 const Login = () => {
+  const dispatch = useDispatch<ThunkDispatch<RootState, null, AnyAction>>();
   const [apiKey, setApiKey] = useState('');
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -8,11 +14,7 @@ const Login = () => {
   };
 
   const handleLogin = () => {
-    if (apiKey.trim() === '') {
-      alert('Please enter your API key');
-      return;
-    }
-    console.log(apiKey);
+    return dispatch(login(apiKey));
   };
 
   return (
