@@ -20,10 +20,8 @@ export const login = (
     
   } catch (error) {
     if (error instanceof Error) {
-      console.log('error');
       dispatch(loginFailure(error.message));
     } else {
-      console.log('unknown error');
       dispatch(loginFailure('An unknown error occurred.'));
     }
   }
