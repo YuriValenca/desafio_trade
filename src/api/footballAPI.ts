@@ -10,8 +10,6 @@ export const validateApiKey = async (apiKey: string): Promise<boolean> => {
         [API_KEY_HEADER]: apiKey,
       },
     });
-    console.log(response.data, 'response.data');
-    console.log(response.data.results, 'response.data.results');
 
     if (response.data.results) {
       return true;
